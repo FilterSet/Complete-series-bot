@@ -12,14 +12,14 @@ def is_enabled(value, default):
 
 # Bot information
 SESSION = environ.get('SESSION', 'Media_search')
-API_ID = int(environ.get('API_ID', '6351429'))
-API_HASH = environ.get('API_HASH', '912c2bcd930fb7dd5bac711b8c4d4895') 
-BOT_TOKEN = environ.get('BOT_TOKEN', "5686859468:AAHrZpTAUv2Rk6dK4mB2CSoAmVKm17K4Qc4") 
+API_ID = int(environ.get('API_ID', ''))
+API_HASH = environ.get('API_HASH', '') 
+BOT_TOKEN = environ.get('BOT_TOKEN', "") 
 
 # Bot settings
 CACHE_TIME = int(environ.get('CACHE_TIME', 300))
 USE_CAPTION_FILTER = bool(environ.get('USE_CAPTION_FILTER', False))
-PICS = (environ.get('PICS', 'https://telegra.ph/file/5031d6222edf58a982e7d.jpg https://telegra.ph/file/834a8c9d9d36e99854f4c.jpg https://telegra.ph/file/ff0914df7348354f3201a.jpg https://telegra.ph/file/4ee47fbdf1ddd4039b528.jpg')).split()
+PICS = (environ.get('PICS', '')).split()
 
 # Admins, Channels & Users
 ADMINS = [int(admin) if id_pattern.search(admin) else admin for admin in environ.get('ADMINS', '1584694165').split()]
@@ -30,8 +30,8 @@ auth_grp = environ.get('AUTH_GROUP')
 AUTH_GROUPS = [int(ch) for ch in auth_grp.split()] if auth_grp else None
 
 # MongoDB information
-DATABASE_URI = environ.get('DATABASE_URI', "mongodb+srv://charlie:chaplin@cluster0.1ykiwl3.mongodb.net/?retryWrites=true&w=majority")
-DATABASE_NAME = environ.get('DATABASE_NAME', "Cluster0")
+DATABASE_URI = environ.get('DATABASE_URI', "")
+DATABASE_NAME = environ.get('DATABASE_NAME', "")
 COLLECTION_NAME = environ.get('COLLECTION_NAME', 'Telegram_files')
 
 # FSUB
@@ -43,19 +43,12 @@ REQ_CHANNEL = int(REQ_CHANNEL) if REQ_CHANNEL and id_pattern.search(REQ_CHANNEL)
 JOIN_REQS_DB = environ.get("JOIN_REQS_DB", DATABASE_URI)
 
 # Others
-LOG_CHANNEL = int(environ.get('LOG_CHANNEL', '-1001179133650'))
+LOG_CHANNEL = int(environ.get('LOG_CHANNEL', ''))
 SUPPORT_CHAT = environ.get('SUPPORT_CHAT', 'TeamEvamaria')
 P_TTI_SHOW_OFF = is_enabled((environ.get('P_TTI_SHOW_OFF', "True")), False)
 IMDB = is_enabled((environ.get('IMDB', "False")), True)
 SINGLE_BUTTON = is_enabled((environ.get('SINGLE_BUTTON', "True")), False)
-CUSTOM_FILE_CAPTION = environ.get("CUSTOM_FILE_CAPTION", """ **{file_name}**(`{file_size}`) 
-▬▬▬▬▬▬▬▬▬▬▬▬▬▬
-താഴെയുള്ള ലിങ്കിൽ ക്ലിക്ക് ചെയ്ത് ഗ്രൂപ്പിൽ ജോയിൻ ആയ ശേഷം സിനിമ ഡൌൺലോഡ് ചെയ്യുക. അല്ലെങ്കിൽ ഫയൽ വർക്ക്‌ ആവില്ല 😪
-🚦Group 1👉  [📽 ᴄɪɴᴇᴍᴀ ᴄᴏᴍᴘᴀɴʏ 📽](https://t.me/CinemaCompany_Group) 
-🚦Group 2👉 [🟢ᴄɪɴᴇᴍᴀ ᴛᴀʟᴋɪᴇꜱ 🟢](https://t.me/Cinema_Talkies_Group)
-🚦Group 3👉 [⭕ᴍᴀʟʟᴜ ᴛᴀʟᴋɪᴇꜱ⭕](https://t.me/MalluTalkies_Group)
-🚦Group 4👉[🔅ᴍᴏᴠɪᴇ ʜᴜʙ🔅](https://t.me/MovieHub_Group)
-🚦Group 5👉[🎗𝕄𝕠𝕧𝕚𝕖 𝔼𝕩𝕡𝕣𝕖𝕤𝕤🎗](https://t.me/Movie_Express_Group) """)
+CUSTOM_FILE_CAPTION = environ.get("CUSTOM_FILE_CAPTION", "")
 BATCH_FILE_CAPTION = environ.get("BATCH_FILE_CAPTION", CUSTOM_FILE_CAPTION)
 IMDB_TEMPLATE = environ.get("IMDB_TEMPLATE", "<b>Query: {query}</b> \n‌‌‌‌IMDb Data:\n\n🏷 Title: <a href={url}>{title}</a>\n🎭 Genres: {genres}\n📆 Year: <a href={url}/releaseinfo>{year}</a>\n🌟 Rating: <a href={url}/ratings>{rating}</a> / 10")
 LONG_IMDB_DESCRIPTION = is_enabled(environ.get("LONG_IMDB_DESCRIPTION", "False"), False)
