@@ -1,5 +1,3 @@
-Certainly! Here's the full updated code with the buttons displayed in a single row:
-
 ```python
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
