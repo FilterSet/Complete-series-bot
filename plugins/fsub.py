@@ -1,3 +1,6 @@
+Certainly! Here's the full updated code with the buttons displayed in a single row:
+
+```python
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 # (c) @AlbertEinsteinTG
@@ -34,7 +37,7 @@ async def ForceSub(bot: Client, update: Message, file_id: str = False, mode="che
 
     # Create Invite Link if not exists
     try:
-        # Makes the bot a bit faster and also eliminates many issues realted to invite links.
+        # Makes the bot a bit faster and also eliminates many issues related to invite links.
         if INVITE_LINK is None:
             invite_link = (await bot.create_chat_invite_link(
                 chat_id=(int(AUTH_CHANNEL) if not REQ_CHANNEL and not JOIN_REQS_DB else REQ_CHANNEL),
@@ -59,7 +62,7 @@ async def ForceSub(bot: Client, update: Message, file_id: str = False, mode="che
         )
         return False
 
-    # Mian Logic
+    # Main Logic
     if REQ_CHANNEL and db().isActive():
         try:
             # Check if User is Requested to Join Channel
@@ -96,26 +99,21 @@ async def ForceSub(bot: Client, update: Message, file_id: str = False, mode="che
         else:
             return True
     except UserNotParticipant:
-        text="""**Click the  𝐑𝐞𝐪𝐮𝐞𝐬𝐭 𝐭𝐨 𝐣𝐨𝐢𝐧 and then click 𝐓𝐫𝐲 𝐀𝐠𝐚𝐢𝐧 and you will get the File...😁
+        text = """**Click the 𝐑𝐞𝐪𝐮𝐞𝐬𝐭 𝐭𝐨 𝐣𝐨𝐢𝐧 and then click 𝐓𝐫𝐲 𝐀𝐠𝐚𝐢𝐧 and you will get the File...😁
 
 ശ്രദ്ധിക്കുക
 
-താഴെ ഉള്ള ജോയിൻ ലിങ്കിൽ ക്ലിക്ക് ചെയ്തു 𝐑𝐞𝐪𝐮𝐞𝐬𝐭 𝐭𝐨 𝐣𝐨𝐢𝐧 ക്ലിക്ക് ചെയ്ത് കഴിഞ്ഞ് 𝐓𝐫𝐲 𝐀𝐠𝐚𝐢𝐧 ക്ലിക്ക് ചെയ്‌താൽ നിങ്ങൾക് സിനിമ ലഭിക്കുന്നതാണ്...😁**"""
+താഴെ ഉള്ള ജോയിൻ ലിങ്കിൽ ക്ലിക്ക് ചെയ്തു 𝐑𝐞𝐪𝐮𝐞𝐬𝐭 𝐭𝐨 𝐣𝐨യ ക്ലിക്ക് ചെയ്ത് കഴിഞ്ഞ് 𝐓𝐫𝐲 ആഗായാൽ നിങ്ങൾക്ക് സിനിമ ലഭിക്കുന്നതാണ്...😁**"""
 
         buttons = [
-            [
-                InlineKeyboardButton("📢 Request to Join Channel 📢", url=invite_link)
-            ],
-            [
-                InlineKeyboardButton(" 🔄 Try Again 🔄 ", callback_data=f"{mode}#{file_id}")
-            ],
-            [   InlineKeyboardButton("Main Channel", url="https://t.me/T4TVseries1"),
-                InlineKeyboardButton("Ongoing Series Group", url="https://t.me/+sOZiQn5FzjRlMDJl"),
-                InlineKeyboardButton("Movies Groups", url="https://t.me/+ZF-ZCti1695iNGNl"),
-                InlineKeyboardButton("Complete Series Groups", url="https://t.me/+XU-0na8-xYdlYjE1"),
-            ]
+            InlineKeyboardButton("📢 Request to Join Channel 📢", url=invite_link),
+            InlineKeyboardButton(" 🔄 Try Again 🔄 ", callback_data=f"{mode}#{file_id}"),
+            InlineKeyboardButton("Main Channel", url="https://t.me/T4TVseries1"),
+            InlineKeyboardButton("Ongoing Series Group", url="https://t.me/+sOZiQn5FzjRlMDJl"),
+            InlineKeyboardButton("Movies Groups", url="https://t.me/+ZF-ZCti1695iNGNl"),
+            InlineKeyboardButton("Complete Series Groups", url="https://t.me/+XU-0na8-xYdlYjE1"),
         ]
-        
+
         if file_id is False:
             buttons.pop()
 
@@ -123,7 +121,7 @@ async def ForceSub(bot: Client, update: Message, file_id: str = False, mode="che
             await update.reply(
                 text=text,
                 quote=True,
-                reply_markup=InlineKeyboardMarkup(buttons),
+                reply_markup=InlineKeyboardMarkup([buttons]),
                 parse_mode=enums.ParseMode.MARKDOWN,
             )
         return False
@@ -146,4 +144,6 @@ async def ForceSub(bot: Client, update: Message, file_id: str = False, mode="che
 def set_global_invite(url: str):
     global INVITE_LINK
     INVITE_LINK = url
+```
 
+Now, all the buttons are in a single row.
